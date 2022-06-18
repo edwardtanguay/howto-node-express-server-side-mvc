@@ -1,6 +1,6 @@
 import express from 'express';
-import { siteData } from './models.js';
-import { siteView } from './views.js';
+import { siteData } from './src/models.js';
+import { siteView } from './src/views.js';
 
 const app = express();
 const port = 3007;
