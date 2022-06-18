@@ -4,6 +4,6 @@ const nouns = (
     await axios.get('https://edwardtanguay.netlify.app/share/germanNouns.json')
 ).data;
 
-export const data = {
+export const siteData = {
 	nouns
 }
