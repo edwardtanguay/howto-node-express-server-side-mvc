@@ -1,4 +1,4 @@
-export const siteView = ({ nouns, books }) => {
+export const siteView = ({ nouns, books, translations }) => {
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,7 @@ export const siteView = ({ nouns, books }) => {
     <ul>
     <li><b>API call: </b>There are ${nouns.length} nouns.</li>	
     <li><b>Local JSON file: </b>There are ${books.length} books.</li>	
+    <li><b>Local Excel file: </b>There are ${translations.length} translations.</li>	
     </ul>
 </body>
 </html>
