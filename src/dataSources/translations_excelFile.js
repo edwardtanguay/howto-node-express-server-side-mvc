@@ -30,6 +30,4 @@ const getTranslations = async () => {
     return translations;
 };
 
-const translations = await getTranslations();
-
-export default translations;
+export default await getTranslations();
