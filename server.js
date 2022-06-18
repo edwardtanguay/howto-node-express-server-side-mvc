@@ -1,16 +1,12 @@
 import express from 'express';
-import axios from 'axios';
+import { data } from './models.js';
 
 const app = express();
 const port = 3007;
 
-const nouns = (
-    await axios.get('https://edwardtanguay.netlify.app/share/germanNouns.json')
-).data;
-
 app.get('/', (req, res) => {
     res.send(
-        `<ul>${nouns
+        `<ul>${data.nouns
             .map((m) => `<li>${m.article} ${m.singular}</li>`)
             .join('')}</ul>`
     );
