@@ -1,5 +1,5 @@
-export const siteView = ({nouns}) => {
+export const siteView = ({ nouns }) => {
     return `<ul>${nouns
-        .map((m) => `<li>${m.article} ${m.singular}</li>`).filter(m => m.article !== 'die')
+        .map((m) => `<li>${m.article} ${m.singular}</li>`)
         .join('')}</ul>`;
 };
