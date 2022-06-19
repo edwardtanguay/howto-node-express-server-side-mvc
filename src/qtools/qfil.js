@@ -9,8 +9,10 @@ import { platform } from 'node:process'; // "win32" or "linux"
 const __dirname = path.resolve(path.dirname(''));
 
 export const getSiteRelativePathAndFileNames = (folderPath) => {
+    console.log(folderPath);
     let result = [];
     let fileNamesInPath = fs.readdirSync(folderPath);
+    console.log(fileNamesInPath);
 
     const osSlash = platform === 'win32' ? '\\' : '/';
     console.log(osSlash);
