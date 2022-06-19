@@ -5,17 +5,15 @@ import * as qsys from './qsys.js';
 import * as config from './config.js';
 import path from 'path';
 import { platform } from 'node:process'; // "win32" or "linux"
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 const __dirname = path.resolve(path.dirname(''));
+const osSlash = platform === 'win32' ? '\\' : '/';
 
 export const getSiteRelativePathAndFileNames = (folderPath) => {
-    console.log(folderPath);
     let result = [];
     let fileNamesInPath = fs.readdirSync(folderPath);
-    console.log(fileNamesInPath);
 
-    const osSlash = platform === 'win32' ? '\\' : '/';
-    console.log(osSlash);
     fileNamesInPath.forEach((fileName) => {
         let filePath = folderPath + osSlash + fileName;
         if (!fs.statSync(filePath).isDirectory()) {
@@ -56,11 +54,17 @@ export const convertBackSlashesToForwardSlashes = function (pathAndFileName) {
 };
 
 export const getContentOfFile = (pathAndFileName) => {
-    const fullPathAndFileName = config.getApplicationPath() + pathAndFileName;
+    const fullPathAndFileName = config.getApplicationPath() + osSlash + pathAndFileName;
     return fs.readFileSync(fullPathAndFileName, 'utf8');
 };
 
 export const getFileAsLines = (pathAndFileName) => {
-    const content = qfil.getContentOfFile(pathAndFileName);
+    let fixedPathAndFileName = '';
+    if (platform === 'win32') {
+        fixedPathAndFileName = '\\' + qstr.replaceAll(pathAndFileName, '/', '\\');
+    } else {
+        fixedPathAndFileName = pathAndFileName; // '\\' + qstr.replaceAll(pathAndFileName, '/', '\\');
+    }
+    const content = qfil.getContentOfFile(fixedPathAndFileName);
     return qstr.convertStringBlockToLines(content);
 };

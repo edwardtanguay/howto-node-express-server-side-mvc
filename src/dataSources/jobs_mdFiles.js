@@ -5,8 +5,7 @@ const getJobs = () => {
     const jobs = [];
     const jobFileNames = qfil.getSiteRelativePathAndFileNames('src/data/jobs');
     jobFileNames.forEach((jobFileName) => {
-        const fixedPathName = '\\' + qstr.replaceAll(jobFileName, '/', '\\');
-        const lines = qfil.getFileAsLines(fixedPathName);
+        const lines = qfil.getFileAsLines(jobFileName);
         const markdown = qstr.convertLinesToStringBlock(lines);
         const html = qstr.parseMarkDown(markdown);
 
