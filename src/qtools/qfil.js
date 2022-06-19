@@ -13,7 +13,6 @@ const osSlash = platform === 'win32' ? '\\' : '/';
 export const getSiteRelativePathAndFileNames = (folderPath) => {
     let result = [];
     let fileNamesInPath = fs.readdirSync(folderPath);
-
     fileNamesInPath.forEach((fileName) => {
         let filePath = folderPath + osSlash + fileName;
         if (!fs.statSync(filePath).isDirectory()) {
@@ -63,7 +62,7 @@ export const getFileAsLines = (pathAndFileName) => {
     if (platform === 'win32') {
         fixedPathAndFileName = '\\' + qstr.replaceAll(pathAndFileName, '/', '\\');
     } else {
-        fixedPathAndFileName = pathAndFileName; // '\\' + qstr.replaceAll(pathAndFileName, '/', '\\');
+        fixedPathAndFileName = pathAndFileName; 
     }
     const content = qfil.getContentOfFile(fixedPathAndFileName);
     return qstr.convertStringBlockToLines(content);
