@@ -3,7 +3,7 @@ import books from './dataSources/books_localJsonFile.js';
 import translations from './dataSources/translations_excelFile.js';
 import jobs from './dataSources/jobs_mdFiles.js';
 
-export const siteData = {
+export const siteData = { 
     nouns,
     books,
     translations,

@@ -8,6 +8,8 @@ import { platform } from 'node:process';
 
 const __dirname = path.resolve(path.dirname(''));
 
+console.log(`platform is: ${platform}`);
+
 // export const getSiteRelativePathAndFileNames = (folderPath) => {
 //     let result = [];
 //     let fileNamesInPath = fs.readdirSync(folderPath);
