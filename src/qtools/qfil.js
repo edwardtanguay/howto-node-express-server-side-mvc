@@ -1,11 +1,9 @@
 import fs from 'fs';
 import * as qstr from './qstr.js';
 import * as qfil from './qfil.js';
-import * as qsys from './qsys.js';
 import * as config from './config.js';
 import path from 'path';
 import { platform } from 'node:process'; // "win32" or "linux"
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 const __dirname = path.resolve(path.dirname(''));
 const osSlash = platform === 'win32' ? '\\' : '/';

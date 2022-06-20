@@ -17,7 +17,6 @@ const getJobs = () => {
             html
         });
     });
-
     return jobs;
 };
 
