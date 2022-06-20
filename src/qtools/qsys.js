@@ -1,4 +1,3 @@
-import * as qmat from './qmat.js';
 import * as qsys from './qsys.js';
 import * as qstr from './qstr.js';
 import path from 'path';
@@ -16,7 +15,21 @@ export const getSystemSlash = (path) => {
 	return platform === 'linux' ? '/' : '\\';
 };
 
-export const buildAbsolutePathAndFileName = (pathAndFileName) => {
-	pathAndFileName = qstr.replaceAll(pathAndFileName, '/', qsys.getSystemSlash());
-	return __dirname + qsys.getSystemSlash() + pathAndFileName;
-}
+/**
+ * Gets the operating-system appropriate absolute path and file name of a file.
+ * Note: as parameter always pass a Linux-style site-relative path and file name.
+ * 
+ * const dbPathAndFileName = qsys.buildAbsolutePathAndFileName('src/data/site.sqlite');
+ * 
+ * WINDOWS: C:\edward\projects\node-mvc\src\data\site.sqlite
+ */
+export const buildSystemAbsolutePathAndFileName = (pathAndFileName) => {
+	pathAndFileName = qstr.replaceAll(
+		pathAndFileName,
+		'/',
+		qsys.getSystemSlash()
+	);
+	const abs = __dirname + qsys.getSystemSlash() + pathAndFileName;
+	console.log(abs);
+	return abs;
+};

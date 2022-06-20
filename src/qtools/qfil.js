@@ -29,9 +29,9 @@ export const getDirectoryPathAndFileNames = (path) => {
 
 /**
  * Get the content of a text file as string with newline characters.
- * 
+ *
  * const fileContent = qfil.getContentOfFile('src/data/jobs/job0001.md');
- * 
+ *
  * "# Frontend Developer\n
  * \n
  *  ## Skills\n
@@ -41,13 +41,13 @@ export const getDirectoryPathAndFileNames = (path) => {
  */
 export const getFileAsStringBlock = (pathAndFileName) => {
 	const fullPathAndFileName =
-		qsys.buildAbsolutePathAndFileName(pathAndFileName);
+		qsys.buildSystemAbsolutePathAndFileName(pathAndFileName);
 	return fs.readFileSync(fullPathAndFileName, 'utf8');
 };
 
 /**
  * Get the content of a text file as array of strings, one string for each line.
- * 
+ *
  * const lines = qfil.getFileAsLines('src/data/jobs/job0001.md');
  *
  * [
@@ -57,7 +57,7 @@ export const getFileAsStringBlock = (pathAndFileName) => {
  *   "",
  *   "- HTML/CSS/JavaScript",
  *   "- React"
- * ] 
+ * ]
  */
 export const getFileAsLines = (pathAndFileName) => {
 	const fileContent = qfil.getFileAsStringBlock(pathAndFileName);
