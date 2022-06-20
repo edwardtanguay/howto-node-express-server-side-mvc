@@ -63,3 +63,20 @@ export const getFileAsLines = (pathAndFileName) => {
 	const fileContent = qfil.getFileAsStringBlock(pathAndFileName);
 	return qstr.convertStringBlockToLines(fileContent);
 };
+
+export const getRecordsFromCsvFile = (pathAndFileName) => {
+	return [
+		{
+			name: 'nnn',
+			age: 34
+		},
+		{
+			name: 'ooo',
+			age: 84
+		},
+		{
+			name: 'ppp',
+			age: 44
+		}
+	]
+}

@@ -1,14 +1,7 @@
+import * as qfil from '../qtools/qfil.js';
+
 const getEmployees = async () => {
-	return [
-		{
-			name: 'nnn',
-			age: 34
-		},
-		{
-			name: 'ooo',
-			age: 84
-		}
-	]
+	return qfil.getRecordsFromCsvFile('src/data/employees.csv');
 }
 
 export default await getEmployees();
