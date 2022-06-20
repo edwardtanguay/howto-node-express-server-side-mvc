@@ -1,5 +1,9 @@
+import MarkdownIt from "markdown-it";
 import * as qstr from './qstr.js';
-import { markdown } from './markdown.js';
+
+const markdown = MarkdownIt({
+  html: true,
+});
 
 export const contains = function (line, searchText) {
     return String(line).includes(searchText);
