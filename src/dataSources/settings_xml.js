@@ -1,10 +1,9 @@
-import fs from 'fs';
-import xml2json from 'xml2json';
+import * as qxml from '../qtools/qxml.js';
 
 const getSettings = () => {
-    return {
-        online: true,
-        fullName: 'Ralph Winston'
-    };
+    const settingsObject = qxml.getXmlFileAsObject('src/data/settings.xml');
+    return settingsObject.settings;
+	qxml.get
 };
+
 export default getSettings();
