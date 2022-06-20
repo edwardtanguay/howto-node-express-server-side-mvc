@@ -2,12 +2,6 @@ import fs from 'fs';
 import * as qstr from './qstr.js';
 import * as qfil from './qfil.js';
 import * as qsys from './qsys.js';
-import path from 'path';
-import { platform } from 'node:process'; // "win32" or "linux"
-
-// WINDOWS: C:\edward\projects\node-mvc
-// LINUX: /home/edward/projects/node-mvc
-const __dirname = path.resolve(path.dirname(''));
 
 /**
  * Get array of files from a directory, non-recursive.

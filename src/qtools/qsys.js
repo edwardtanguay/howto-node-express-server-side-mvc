@@ -4,6 +4,8 @@ import * as qstr from './qstr.js';
 import path from 'path';
 import { platform } from 'node:process'; // "win32" or "linux"
 
+// WINDOWS: C:\edward\projects\node-mvc
+// LINUX: /home/edward/projects/node-mvc
 const __dirname = path.resolve(path.dirname(''));
 
 export const smartResponse = (_req, res, json) => {
