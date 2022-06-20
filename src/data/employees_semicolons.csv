@@ -23,5 +23,5 @@ EMPLOYEE_ID;FIRST_NAME;LAST_NAME;EMAIL;PHONE_NUMBER;HIRE_DATE;JOB_ID;SALARY;COMM
 136;Hazel;Philtanker;HPHILTAN;650.127.1634;06-FEB-08;ST_CLERK;2200; - ;122;5;"pending..."
 137;Renske;Ladwig;RLADWIG;650.121.1234;14-JUL-03;ST_CLERK;3600; - ;123;50;"pending..."
 138;Stephen;Stiles;SSTILES;650.121.2034;26-OCT-05;ST_CLERK;3200; - ;123;50;"pending..."
-139;John;Seo;JSEO;650.121.2019;12-FEB-06;ST_CLERK;2700; - ;123;50;"pending..."
-140;Joshua;Patel;JPATEL;650.121.1834;06-APR-06;ST_CLERK;2500; - ;123;50;"pending..."
+139;John;Seo;JSEO;650.121.2019;12-FEB-06;ST_CLERK;2700; - ;123;50;"eligible for senior pay; can work evenings"
+140;Joshua;Patel;JPATEL;650.121.1834;06-APR-06;ST_CLERK;2500; - ;123;50;"asked for raise; wants to work in the sales department"

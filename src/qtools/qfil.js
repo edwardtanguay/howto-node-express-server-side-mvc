@@ -65,17 +65,26 @@ export const getFileAsLines = (pathAndFileName) => {
 	return qstr.convertStringBlockToLines(fileContent);
 };
 
+/**
+ * Returns records from a CSV file.
+ *
+ * const records = await qfil.getRecordsFromCsvFile('src/data/employees_commas.csv');
+ * const records = await qfil.getRecordsFromCsvFile('src/data/employees_semicolons.csv', ';');
+ */
 export const getRecordsFromCsvFile = (pathAndFileName, delimiter = ',') => {
 	return new Promise((resolve, reject) => {
-		const parser = parse({ columns: true, delimiter }, function (err, records) {
-			if (records === undefined) {
-				reject(err);
-			} else if (records.length === 0) {
-				resolve([]);
-			} else {
-				resolve(records);
+		const parser = parse(
+			{ columns: true, delimiter },
+			function (err, records) {
+				if (records === undefined) {
+					reject(err);
+				} else if (records.length === 0) {
+					resolve([]);
+				} else {
+					resolve(records);
+				}
 			}
-		});
+		);
 		fs.createReadStream(
 			qsys.buildSystemAbsolutePathAndFileName(pathAndFileName)
 		).pipe(parser);
