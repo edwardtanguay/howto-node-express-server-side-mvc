@@ -29,10 +29,9 @@ export const siteView = ({ nouns, books, translations, jobs }) => {
 
     <h2><b>Local directory of markdown files: </b>There are ${jobs.length} jobs.</h2>
     <div class="content">
-        ${jobs[0].idCode}
+        ID-CODE: ${jobs[0].idCode}
         ${jobs[0].html}
     </div>
-
 </body>
 </html>
 `;

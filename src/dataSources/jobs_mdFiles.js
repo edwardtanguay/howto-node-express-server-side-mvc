@@ -10,6 +10,8 @@ const getJobs = () => {
         const html = qstr.parseMarkDown(markdown);
 
         let idCode = qstr.chopLeft(jobFileName, 'src/data/jobs');
+        idCode = qstr.chopLeft(idCode, '/');
+        idCode = qstr.chopLeft(idCode, '\\');
         idCode = qstr.chopRight(idCode, '.md');
 
         jobs.push({
