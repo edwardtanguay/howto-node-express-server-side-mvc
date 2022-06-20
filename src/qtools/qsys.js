@@ -46,7 +46,5 @@ export const buildSystemAbsolutePathAndFileName = (pathAndFileName) => {
 		'/',
 		qsys.getSystemSlash()
 	);
-	const abs = __dirname + qsys.getSystemSlash() + pathAndFileName;
-	console.log(abs);
-	return abs;
+	return __dirname + qsys.getSystemSlash() + pathAndFileName;
 };
