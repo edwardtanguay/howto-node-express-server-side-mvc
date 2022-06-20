@@ -12,4 +12,10 @@ h2 b {
 
 div.content {
 	margin-left: 20px;
+	color: #999;
+	font-family: monospace;
+}
+
+a {
+	color: rgb(229, 229, 169);
 }

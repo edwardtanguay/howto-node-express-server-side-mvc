@@ -18,8 +18,21 @@ export const siteView = ({ nouns, books, translations, jobs }) => {
     </div>
 
     <h2><b>Local JSON file: </b>There are ${books.length} books.</h2>	
+    <div class="content">
+        ${books.filter((m,i) => i < 3).map(m => m.title).join(', ')}, ...
+    </div>
+
     <h2><b>Local Excel file: </b>There are ${translations.length} translations.</h2>	
+    <div class="content">
+        ${translations.filter((m,i) => i < 3).map(m => m.fromPhrase).join(', ')}, ...
+    </div>
+
     <h2><b>Local directory of markdown files: </b>There are ${jobs.length} jobs.</h2>
+    <div class="content">
+        ${jobs[0].idCode}
+        ${jobs[0].html}
+    </div>
+
 </body>
 </html>
 `;

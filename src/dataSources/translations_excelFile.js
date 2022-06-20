@@ -12,13 +12,17 @@ const getTranslations = async () => {
         const fromPhraseCell = `C${row}`;
         const toPhraseCell = `D${row}`;
 
-        const fromLanguage = ws.getCell(fromLanguageCell).value;
-        const toLanguage = ws.getCell(toLanguageCell).value;
-        const fromPhrase = ws.getCell(fromPhraseCell).value;
-        const toPhrase = ws.getCell(toPhraseCell).value;
+        let fromLanguage = ws.getCell(fromLanguageCell).value;
+        let toLanguage = ws.getCell(toLanguageCell).value;
+        let fromPhrase = ws.getCell(fromPhraseCell).value;
+        let toPhrase = ws.getCell(toPhraseCell).value;
         if (fromLanguage === null) {
             break;
         } else {
+            fromLanguage = typeof fromLanguage !== 'string' ? '' : fromLanguage.trim();
+            toLanguage = typeof toLanguage !== 'string' ? '' : toLanguage.trim();
+            fromPhrase = typeof fromPhrase !== 'string' ? '' : fromPhrase.trim();
+            toPhrase = typeof toPhrase !== 'string' ? '' : toPhrase.trim();
             translations.push({
                 fromLanguage,
                 toLanguage,
