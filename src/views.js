@@ -59,7 +59,7 @@ export const siteView = ({
 	<div class="content">
 		${employees
 			.filter((m, i) => i < 3)
-			.map((m) => m.name)
+			.map((m) => `${m.FIRST_NAME} ${m.LAST_NAME}`)
 			.join(', ')}, ...
 	</div>
 

@@ -65,9 +65,9 @@ export const getFileAsLines = (pathAndFileName) => {
 	return qstr.convertStringBlockToLines(fileContent);
 };
 
-export const getRecordsFromCsvFile = (pathAndFileName) => {
+export const getRecordsFromCsvFile = (pathAndFileName, delimiter = ',') => {
 	return new Promise((resolve, reject) => {
-		const parser = parse({ columns: true }, function (err, records) {
+		const parser = parse({ columns: true, delimiter }, function (err, records) {
 			if (records === undefined) {
 				reject(err);
 			} else if (records.length === 0) {
@@ -76,7 +76,6 @@ export const getRecordsFromCsvFile = (pathAndFileName) => {
 				resolve(records);
 			}
 		});
-
 		fs.createReadStream(
 			qsys.buildSystemAbsolutePathAndFileName(pathAndFileName)
 		).pipe(parser);
