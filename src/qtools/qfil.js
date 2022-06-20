@@ -1,7 +1,7 @@
 import fs from 'fs';
 import * as qstr from './qstr.js';
 import * as qfil from './qfil.js';
-import * as config from './config.js';
+import * as qsys from './qsys.js';
 import path from 'path';
 import { platform } from 'node:process'; // "win32" or "linux"
 
@@ -21,27 +21,6 @@ export const getSiteRelativePathAndFileNames = (folderPath) => {
     return result;
 };
 
-// export const getSiteRelativePathAndFileNames = function (absoluteDirectory, files_) {
-//     absoluteDirectory = absoluteDirectory || __dirname;
-//     files_ = files_ || [];
-//     var files = fs.readdirSync(absoluteDirectory);
-//     const osSlash = qsys.getOperatingSystemSlash();
-//     for (var i in files) {
-//         var absolutePathAndFileName = absoluteDirectory + osSlash + files[i];
-//         if (!qstr.contains(absolutePathAndFileName, '\\node_modules\\')) {
-//             absolutePathAndFileName = qstr.replaceAll(absolutePathAndFileName, `\\\\`, `\\`);
-//             if (fs.statSync(absolutePathAndFileName).isDirectory()) {
-//                 qfil.getSiteRelativePathAndFileNames(absolutePathAndFileName, files_);
-//             } else {
-//                 const relativePathAndFileName = qfil.getRelativePathAndFileName(absolutePathAndFileName);
-//                 const fixedPathAndFileName = qfil.convertBackSlashesToForwardSlashes(relativePathAndFileName);
-//                 files_.push(fixedPathAndFileName);
-//             }
-//         }
-//     }
-//     return files_;
-// }
-
 export const getRelativePathAndFileName = function (absolutePathAndFileName) {
     return qstr.chopLeft(absolutePathAndFileName, __dirname);
 };
@@ -51,7 +30,7 @@ export const convertBackSlashesToForwardSlashes = function (pathAndFileName) {
 };
 
 export const getContentOfFile = (pathAndFileName) => {
-    const fullPathAndFileName = config.getApplicationPath() + osSlash + pathAndFileName;
+    const fullPathAndFileName = qsys.buildAbsolutePathAndFileName(pathAndFileName);
     return fs.readFileSync(fullPathAndFileName, 'utf8');
 };
 
