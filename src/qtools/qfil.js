@@ -2,6 +2,7 @@ import fs from 'fs';
 import * as qstr from './qstr.js';
 import * as qfil from './qfil.js';
 import * as qsys from './qsys.js';
+import { parse } from 'csv-parse';
 
 /**
  * Get array of files from a directory, non-recursive.
@@ -65,18 +66,19 @@ export const getFileAsLines = (pathAndFileName) => {
 };
 
 export const getRecordsFromCsvFile = (pathAndFileName) => {
-	return [
-		{
-			name: 'nnn',
-			age: 34
-		},
-		{
-			name: 'ooo',
-			age: 84
-		},
-		{
-			name: 'ppp',
-			age: 44
-		}
-	]
-}
+	return new Promise((resolve, reject) => {
+		const parser = parse({ columns: true }, function (err, records) {
+			if (records === undefined) {
+				reject(err);
+			} else if (records.length === 0) {
+				resolve([]);
+			} else {
+				resolve(records);
+			}
+		});
+
+		fs.createReadStream(
+			qsys.buildSystemAbsolutePathAndFileName(pathAndFileName)
+		).pipe(parser);
+	});
+};
