@@ -6,22 +6,22 @@ const absoluteDbPathAndFileName = qsys.buildSystemAbsolutePathAndFileName(
 	'src/data/site.sqlite'
 );
 
-export const getRecordWithSql = (sql) => {
-	return new Promise((resolve, reject) => {
-		const db = new sqlite3.Database(absoluteDbPathAndFileName);
-		db.all(sql, function (err, records) {
-			if (records === undefined) {
-				reject(err);
-			} else if (records.length === 0) {
-				resolve(null);
-			} else {
-				resolve(records[0]);
-			}
-		});
-		db.close();
-	});
-};
-
+/**
+ * Returns promise for an array of objects based on an SQL query.
+ * 
+ * return await qsql.getRecordsWithSql('SELECT * FROM colors');
+ * 
+ * [
+ *   {
+ *      id: 1,
+ *      name: "blue"
+ *   },
+ *   {
+ *      id: 2,
+ *      name: "red"
+ *   }
+ * ]
+ */
 export const getRecordsWithSql = (sql) => {
 	return new Promise((resolve, reject) => {
 		const db = new sqlite3.Database(absoluteDbPathAndFileName);
@@ -31,6 +31,7 @@ export const getRecordsWithSql = (sql) => {
 			} else if (records.length === 0) {
 				resolve([]);
 			} else {
+                console.log(records)
 				resolve(records);
 			}
 		});
