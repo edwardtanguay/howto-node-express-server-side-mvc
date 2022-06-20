@@ -22,6 +22,7 @@ export const getSystemSlash = (path) => {
  * const dbPathAndFileName = qsys.buildAbsolutePathAndFileName('src/data/site.sqlite');
  * 
  * WINDOWS: C:\edward\projects\node-mvc\src\data\site.sqlite
+ * LINUX: /home/edward/projects/howto-node-express-server-side-mvc/src/data/site.sqlite
  */
 export const buildSystemAbsolutePathAndFileName = (pathAndFileName) => {
 	pathAndFileName = qstr.replaceAll(
