@@ -66,7 +66,6 @@ export const getFileAsStringBlock = (pathAndFileName) => {
  * ] 
  */
 export const getFileAsLines = (pathAndFileName) => {
-	console.log(pathAndFileName);
 	const fileContent = qfil.getFileAsStringBlock(pathAndFileName);
 	return qstr.convertStringBlockToLines(fileContent);
 };
