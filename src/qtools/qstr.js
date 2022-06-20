@@ -5,32 +5,24 @@ const markdown = MarkdownIt({
   html: true,
 });
 
-export const contains = function (line, searchText) {
-    return String(line).includes(searchText);
-};
-
+/**
+ * Replaces every occurance of a string with another string.
+ * 
+ * const path = qstr.replaceAll( 'node-express-mvc', '-', '_');
+ * 
+ * node_express_mvc
+ */
 export const replaceAll = function (text, search, replace) {
-    text = qstr.forceAsString(text);
-    const text2 = text.split(search).join(replace);
-    return text2;
+    return text.split(search).join(replace);
 };
 
-export const forceAsString = function (stringOrOther) {
-    if (!qstr.isString(stringOrOther)) {
-        return String(stringOrOther);
-    } else {
-        return stringOrOther;
-    }
-};
-
-export const isString = function (obj) {
-    if (typeof obj === 'string' || obj instanceof String) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
+/**
+ * Removes a string from the left if it exists.
+ * 
+ * const pathAndFileName = qstr.chopLeft('/src/data/db.json', '/');
+ * 
+ * src/data/db.json
+ */
 export const chopLeft = function (main, textToChop) {
     if (main.startsWith(textToChop)) {
         const len = textToChop.length;
@@ -42,6 +34,13 @@ export const chopLeft = function (main, textToChop) {
     return main;
 };
 
+/**
+ * Removes a string from the right if it exists.
+ * 
+ * const fileName = qstr.chopRight('image001.jpg', '.jpg');
+ * 
+ * image001
+ */
 export const chopRight = function (main, textToChop) {
     if (main.endsWith(textToChop)) {
         const len = textToChop.length;
@@ -53,16 +52,18 @@ export const chopRight = function (main, textToChop) {
     return main;
 };
 
-export const startsWithPrefixes = (text, unwantedPrefixes) => {
-    let rb = false;
-    unwantedPrefixes.forEach((unwantedPrefix) => {
-        if (text.startsWith(unwantedPrefix)) {
-            rb = true;
-        }
-    });
-    return rb;
-};
-
+/**
+ * Converts a string block with newlines to an array of strings, one string per line.
+ * 
+ * const lines = qstr.convertStringBlockToLines(settingsXmlContent);
+ * 
+ * [
+ *   "<settings>",
+ *   "\t<user>user001</user>",
+ *   "\t<password>123</password>",
+ *   "</settings>",
+ * ]
+ */
 export const convertStringBlockToLines = (stringBlock, trimLines = true) => {
     if (qstr.isEmpty(stringBlock)) {
         return [];
@@ -75,6 +76,13 @@ export const convertStringBlockToLines = (stringBlock, trimLines = true) => {
     return roughLines;
 };
 
+/**
+ * Returns whether a string is empty, null, undefined, etc.
+ * 
+ * const isEmpty = qstr.isEmpty('');
+ * 
+ * true
+ */
 export const isEmpty = (line) => {
     if (line == undefined || line == null) {
         return true;
@@ -88,6 +96,9 @@ export const isEmpty = (line) => {
     }
 };
 
+/**
+ * Takes an array of lines and trimes them all. 
+ */
 export const trimAllLinesInLinesArray = (lines) => {
     const newLines = [];
     lines.forEach(function (line, index) {
@@ -98,6 +109,10 @@ export const trimAllLinesInLinesArray = (lines) => {
     return newLines;
 };
 
+
+/**
+ * Removes any empty lines at the beginning and end of an array.
+ */
 export const trimLinesOfEndBlanks = (lines) => {
     lines = qstr.trimBeginningLinesOfBlanks(lines);
     lines = lines.reverse();
@@ -106,6 +121,9 @@ export const trimLinesOfEndBlanks = (lines) => {
     return lines;
 };
 
+/**
+ * Removes empty lines from the beginning of an array.
+ */
 export const trimBeginningLinesOfBlanks = (lines) => {
     const newLines = [];
     let trimmingBlanks = true;
@@ -121,6 +139,9 @@ export const trimBeginningLinesOfBlanks = (lines) => {
     return newLines;
 };
 
+/**
+ * Converts an array of lines (e.g. from a file) into a string block (e.g. to be saved into a file).
+ */
 export const convertLinesToStringBlock = (lines) => {
     let r = '';
     let index = 0;
@@ -134,11 +155,17 @@ export const convertLinesToStringBlock = (lines) => {
     return r;
 };
 
+/**
+ * Represents a new line character (\n) but is more explicit and can be changed at one place to e.g. \r\n if need be.
+ */
 export const NEW_LINE = (numberOfNewLines = 1) => {
     const endOfLine = '\n';
     return endOfLine.repeat(numberOfNewLines);
 };
 
+/**
+ * Takes markdown text and converts it into HTML.
+ */
 export const parseMarkDown = (
     markdownText,
     options = {

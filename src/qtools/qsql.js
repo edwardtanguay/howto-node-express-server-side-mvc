@@ -31,7 +31,6 @@ export const getRecordsWithSql = (sql) => {
 			} else if (records.length === 0) {
 				resolve([]);
 			} else {
-                console.log(records)
 				resolve(records);
 			}
 		});
