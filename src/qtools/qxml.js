@@ -21,6 +21,5 @@ export const getXmlFileAsObject = (pathAndFileName) => {
     const xmlAsText = fs.readFileSync(fullPathAndFileName, 'utf8');
     const xmlAsJson = parser.toJson(xmlAsText);
     const xmlAsObject = JSON.parse(xmlAsJson);
-    console.log(xmlAsObject);
     return xmlAsObject;
 };
