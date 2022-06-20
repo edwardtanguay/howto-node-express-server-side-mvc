@@ -1,6 +1,7 @@
 export const siteView = ({
     nouns,
     books,
+    techPersons,
     translations,
     jobs,
     landscapePhotos
@@ -31,6 +32,14 @@ export const siteView = ({
         ${books
             .filter((m, i) => i < 3)
             .map((m) => m.title)
+            .join(', ')}, ...
+    </div>
+
+    <h2><b>Local SQLite file: </b>There are ${techPersons.length} tech persons.</h2>	
+    <div class="content">
+        ${techPersons
+            .filter((m, i) => i < 3)
+            .map((m) => m.fullName)
             .join(', ')}, ...
     </div>
 
