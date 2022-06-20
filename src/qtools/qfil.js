@@ -6,15 +6,14 @@ import path from 'path';
 import { platform } from 'node:process'; // "win32" or "linux"
 
 const __dirname = path.resolve(path.dirname(''));
-const osSlash = platform === 'win32' ? '\\' : '/';
 
 export const getSiteRelativePathAndFileNames = (folderPath) => {
     let result = [];
     let fileNamesInPath = fs.readdirSync(folderPath);
     fileNamesInPath.forEach((fileName) => {
-        let filePath = folderPath + osSlash + fileName;
+        let filePath = folderPath + qsys.getSystemSlash() + fileName;
         if (!fs.statSync(filePath).isDirectory()) {
-            let filePath = folderPath + osSlash + fileName;
+            let filePath = folderPath + qsys.getSystemSlash() + fileName;
             result.push(filePath);
         }
     });

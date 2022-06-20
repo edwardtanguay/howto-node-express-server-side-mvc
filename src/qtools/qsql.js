@@ -1,9 +1,8 @@
 import sqlite3 from 'sqlite3';
 import * as qsys from './qsys.js';
 
-// const dbPathAndFileName = qsys.buildAbsolutePathAndFileName('src/data/site.sqlite');
-const dbPathAndFileName = 'c:\\test.sqlite';
-console.log(dbPathAndFileName);
+//view and manage SQLite files on Windows/Mac/Linux with: https://sqlitebrowser.org/dl
+const dbPathAndFileName = qsys.buildAbsolutePathAndFileName('src/data/site.sqlite');
 
 export const getRecordWithSql = (sql) => {
     return new Promise((resolve, reject) => {
