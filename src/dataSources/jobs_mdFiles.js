@@ -3,7 +3,7 @@ import * as qstr from '../qtools/qstr.js';
 
 const getJobs = () => {
     const jobs = [];
-    const jobFileNames = qfil.getSiteRelativePathAndFileNames('src/data/jobs');
+    const jobFileNames = qfil.getDirectoryPathAndFileNames('src/data/jobs');
     jobFileNames.forEach((jobFileName) => {
         const lines = qfil.getFileAsLines(jobFileName);
         const markdown = qstr.convertLinesToStringBlock(lines);

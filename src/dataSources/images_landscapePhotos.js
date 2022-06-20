@@ -3,7 +3,7 @@ import * as qstr from '../qtools/qstr.js';
 
 const getLandscapePhotos = () => {
     const landscapePhotos = [];
-    const pathAndFileNames = qfil.getSiteRelativePathAndFileNames('public/images');
+    const pathAndFileNames = qfil.getDirectoryPathAndFileNames('public/images');
     pathAndFileNames.forEach((pathAndFileName) => {
         let fileName = qstr.chopLeft(pathAndFileName, 'public/images');
         fileName = qstr.chopLeft(fileName, '/');

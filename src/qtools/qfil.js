@@ -5,50 +5,68 @@ import * as qsys from './qsys.js';
 import path from 'path';
 import { platform } from 'node:process'; // "win32" or "linux"
 
-// C:\bbb\_TESTS\more\howto-node-express-server-side-mvc
-// /home/edward/projects/howto-node-express-server-side-mvc
+// WINDOWS: C:\edward\projects\node-mvc
+// LINUX: /home/edward/projects/node-mvc
 const __dirname = path.resolve(path.dirname(''));
 
-console.log('dirname: ' + __dirname);
-
 /**
- * const files = qfil.getSiteRelativePathAndFileNames('src/data/jobs');
+ * Get array of files from a directory, non-recursive.
+ * 
+ * const files = qfil.getDirectoryPathAndFileNames('public/images');
+ * 
+ * [
+ * 'public/images/field.jpg',
+ * 'public/images/forest.jpg',
+ * 'public/images/sunset.jpg'
+]
  */
-export const getSiteRelativePathAndFileNames = (folderPath) => {
+export const getDirectoryPathAndFileNames = (path) => {
 	let result = [];
-	let fileNamesInPath = fs.readdirSync(folderPath);
+	let fileNamesInPath = fs.readdirSync(path);
 	fileNamesInPath.forEach((fileName) => {
-		let filePath = folderPath + qsys.getSystemSlash() + fileName;
+		let filePath = path + '/' + fileName;
 		if (!fs.statSync(filePath).isDirectory()) {
-			let filePath = folderPath + qsys.getSystemSlash() + fileName;
+			let filePath = path + '/' + fileName;
 			result.push(filePath);
 		}
 	});
 	return result;
 };
 
-export const getRelativePathAndFileName = function (absolutePathAndFileName) {
-	return qstr.chopLeft(absolutePathAndFileName, __dirname);
-};
-
-export const convertBackSlashesToForwardSlashes = function (pathAndFileName) {
-	return qstr.replaceAll(pathAndFileName, '\\', '/');
-};
-
-export const getContentOfFile = (pathAndFileName) => {
+/**
+ * Get the content of a text file as string with newline characters.
+ * 
+ * const fileContent = qfil.getContentOfFile('src/data/jobs/job0001.md');
+ * 
+ * "# Frontend Developer\n
+ * \n
+ *  ## Skills\n
+ * \n
+ *  - HTML/CSS/JavaScript\n
+ *  - React"
+ */
+export const getFileAsStringBlock = (pathAndFileName) => {
 	const fullPathAndFileName =
 		qsys.buildAbsolutePathAndFileName(pathAndFileName);
 	return fs.readFileSync(fullPathAndFileName, 'utf8');
 };
 
+/**
+ * Get the content of a text file as array of strings, one string for each line.
+ * 
+ * const lines = qfil.getFileAsLines('src/data/jobs/job0001.md');
+ *
+ * [
+ *   "# Frontend Developer",
+ *   "",
+ *   "## Skills",
+ *   "",
+ *   "- HTML/CSS/JavaScript",
+ *   "- React"
+ * ] 
+ */
 export const getFileAsLines = (pathAndFileName) => {
-	let fixedPathAndFileName = '';
-	if (platform === 'win32') {
-		fixedPathAndFileName =
-			'\\' + qstr.replaceAll(pathAndFileName, '/', '\\');
-	} else {
-		fixedPathAndFileName = pathAndFileName;
-	}
-	const content = qfil.getContentOfFile(fixedPathAndFileName);
-	return qstr.convertStringBlockToLines(content);
+	console.log(pathAndFileName);
+	const fileContent = qfil.getFileAsStringBlock(pathAndFileName);
+	return qstr.convertStringBlockToLines(fileContent);
 };
