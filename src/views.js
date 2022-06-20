@@ -2,6 +2,7 @@ export const siteView = ({
     nouns,
     books,
     techPersons,
+    settings,
     translations,
     jobs,
     landscapePhotos
@@ -40,6 +41,14 @@ export const siteView = ({
         ${techPersons
             .filter((m, i) => i < 3)
             .map((m) => m.fullName)
+            .join(', ')}, ...
+    </div>
+
+    <h2><b>Local XML file: </b>There are ${Object.entries(settings).length} settings.</h2>	
+    <div class="content">
+        ${Object.entries(settings)
+            .filter((m, i) => i < 3)
+            .map((m) => `${m[0]}: ${m[1]}`)
             .join(', ')}, ...
     </div>
 
