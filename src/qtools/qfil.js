@@ -6,7 +6,7 @@ import path from 'path';
 import { platform } from 'node:process'; // "win32" or "linux"
 
 // C:\bbb\_TESTS\more\howto-node-express-server-side-mvc
-// 
+// /home/edward/projects/howto-node-express-server-side-mvc
 const __dirname = path.resolve(path.dirname(''));
 
 console.log('dirname: ' + __dirname);
