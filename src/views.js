@@ -11,12 +11,15 @@ export const siteView = ({ nouns, books, translations, jobs }) => {
 </head>
 <body>
     <h1>Info Site</h1>
-    <ul>
-    <li><b>API call: </b>There are ${nouns.length} nouns.</li>	
-    <li><b>Local JSON file: </b>There are ${books.length} books.</li>	
-    <li><b>Local Excel file: </b>There are ${translations.length} translations.</li>	
-    <li><b>Local directory of markdown files: </b>There are ${jobs.length} jobs.</li>
-    </ul>
+
+    <h2><b>API call: </b>There are ${nouns.length} nouns.</h2>
+    <div class="content">
+        ${nouns.filter((m,i) => i < 3).map(m => m.article + ' ' + m.singular).join(', ')}, ...
+    </div>
+
+    <h2><b>Local JSON file: </b>There are ${books.length} books.</h2>	
+    <h2><b>Local Excel file: </b>There are ${translations.length} translations.</h2>	
+    <h2><b>Local directory of markdown files: </b>There are ${jobs.length} jobs.</h2>
 </body>
 </html>
 `;
