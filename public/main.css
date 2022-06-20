@@ -17,6 +17,20 @@ div.content {
 	font-size: .8rem;
 }
 
+div.content img {
+	height: 100px;
+	margin-right: 5px;
+}
+
+div.job {
+	background-color: #222;
+	padding: 20px;
+	margin-bottom: 10px;
+	border: 1px solid #444;
+	border-radius: 5px;
+	max-width: 900px;
+}
+
 a {
 	color: rgb(229, 229, 169);
 }
