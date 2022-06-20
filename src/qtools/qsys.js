@@ -8,11 +8,6 @@ import { platform } from 'node:process'; // "win32" or "linux"
 // LINUX: /home/edward/projects/node-mvc
 const __dirname = path.resolve(path.dirname(''));
 
-export const smartResponse = (_req, res, json) => {
-	const ms = qmat.getRandomNumber(1000, 2000);
-	res.json(json);
-};
-
 export const getSystem = (path) => {
 	return platform;
 };
